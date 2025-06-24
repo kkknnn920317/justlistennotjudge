@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Just Listen Not Judge</title>
+  <style>
+    /* 背景深藍色 */
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #0B1A2A;
+      color: #ddd;
+      font-family: 'Noto Sans TC', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-x: hidden;
+    }
+    header {
+      margin-top: 50px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #f0e9d2;
+      letter-spacing: 0.2em;
+      text-shadow: 0 0 10px #a6a6a6;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-top: 0;
+      font-style: italic;
+    }
+    /* 星星閃爍 */
+    .star {
+      position: fixed;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation-name: twinkle;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+    }
+    @keyframes twinkle {
+      0%, 100% {opacity: 0.8;}
+      50% {opacity: 0.2;}
+    }
+    /* 燭光 */
+    .candle {
+      position: fixed;
+      bottom: 40px;
+      width: 20px;
+      height: 60px;
+      background: #c35f3f;
+      border-radius: 5px;
+      box-shadow: 0 0 10px 3px #ff9f47;
+    }
+    .flame {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 25px;
+      background: radial-gradient(ellipse at center, #ffea70 0%, #ff7900 60%, transparent 80%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      filter: drop-shadow(0 0 6px #ff9900);
+      animation: flicker 1.5s infinite alternate;
+    }
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 1; }
+      100% { transform: translateX(-48%) scale(1.1); opacity: 0.7; }
+    }
+    /* 內容區 */
+    main {
+      max-width: 700px;
+      background: rgba(11, 26, 42, 0.75);
+      margin: 40px 20px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #2f4f8a;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    footer {
+      margin: 50px 0 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Just Listen Not Judge</h1>
+    <p>提供情緒出口 · 匿名來信 · AI溫暖回覆</p>
+  </header>
+
+  <main>
+    <p>這是一個溫暖神秘的空間，讓你無需擔心被評判，真誠傾訴你的心聲。<br />
+    由 AI 「listener」陪伴你，像家人、朋友般守護你每一刻。</p>
+  </main>
+
+  <footer>© 2025 Just Listen Not Judge</footer>
+
+  <!-- 動態星星產生 -->
+  <script>
+    const starCount = 50;
+    for(let i=0; i<starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      star.style.animationDelay = (Math.random() * 5) + 's';
+      document.body.appendChild(star);
+    }
+
+    // 燭光 - 可放多支燭光
+    function createCandle(x) {
+      const candle = document.createElement('div');
+      candle.classList.add('candle');
+      candle.style.left = x + 'px';
+      const flame = document.createElement('div');
+      flame.classList.add('flame');
+      candle.appendChild(flame);
+      document.body.appendChild(candle);
+    }
+    createCandle(100);
+    createCandle(window.innerWidth - 120);
+  </script>
+</body>
+</html>
