@@ -4,14 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>投稿區 - Just Listen Not Judge</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0B1A2A;
+      color: #ddd;
+      font-family: 'Noto Sans TC', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-x: hidden;
+    }
+    header {
+      margin-top: 50px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #f0e9d2;
+      letter-spacing: 0.2em;
+      text-shadow: 0 0 10px #a6a6a6;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-top: 0;
+      font-style: italic;
+    }
+    nav {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #f0e9d2;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: rgba(240, 233, 210, 0.2);
+    }
+    main {
+      max-width: 700px;
+      background: rgba(11, 26, 42, 0.75);
+      margin: 40px 20px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #2f4f8a;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    footer {
+      margin: 50px 0 20px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      border-radius: 12px;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Just Listen Not Judge</h1>
+    <p>提供情緒出口 · 匿名來信 · AI溫暖回覆</p>
     <nav>
       <a href="index.html">首頁</a>
-      <a href="submit.html" class="active">投稿區</a>
+      <a href="submit.html">投稿區</a>
       <a href="responses.html">回信展示</a>
       <a href="about.html">關於 Listener</a>
       <a href="how.html">AI 如何運作</a>
@@ -21,12 +91,12 @@
   </header>
 
   <main>
-    <h2>匿名投稿區</h2>
-    <!-- 嵌入 Google 表單 iframe -->
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0wIcdUDtJpqqMG9N4uYuaYWgwsEkYz7SzTsqEn7wnrevq7Q/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">載入中…</iframe>
+    <h2>匿名投稿你的心聲</h2>
+    <p>請透過以下表單分享你的故事，我們會用 AI 以溫暖的方式回覆你。</p>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0wIcdUDtJpqqMG9N4uYuaYWgwsEkYz7SzTsqEn7wnrevq7Q/viewform?embedded=true">載入中…</iframe>
   </main>
 
   <footer>© 2025 Just Listen Not Judge</footer>
-  <script src="js/main.js"></script>
 </body>
 </html>
+
