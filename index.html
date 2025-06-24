@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Just Listen Not Judge</title>
   <style>
-    /* 背景深藍色 */
     body {
       margin: 0;
       height: 100vh;
@@ -35,7 +34,6 @@
       margin-top: 0;
       font-style: italic;
     }
-    /* 星星閃爍 */
     .star {
       position: fixed;
       background: white;
@@ -49,7 +47,6 @@
       0%, 100% {opacity: 0.8;}
       50% {opacity: 0.2;}
     }
-    /* 燭光 */
     .candle {
       position: fixed;
       bottom: 40px;
@@ -75,7 +72,6 @@
       0% { transform: translateX(-50%) scale(1); opacity: 1; }
       100% { transform: translateX(-48%) scale(1.1); opacity: 0.7; }
     }
-    /* 內容區 */
     main {
       max-width: 700px;
       background: rgba(11, 26, 42, 0.75);
@@ -101,12 +97,11 @@
 
   <main>
     <p>這是一個溫暖神秘的空間，讓你無需擔心被評判，真誠傾訴你的心聲。<br />
-    由 AI 「listener」陪伴你，像家人、朋友般守護你每一刻。</p>
+    由 AI 「Listener」陪伴你，像家人、朋友般守護你每一刻。</p>
   </main>
 
   <footer>© 2025 Just Listen Not Judge</footer>
 
-  <!-- 動態星星產生 -->
   <script>
     const starCount = 50;
     for(let i=0; i<starCount; i++) {
@@ -120,7 +115,6 @@
       document.body.appendChild(star);
     }
 
-    // 燭光 - 可放多支燭光
     function createCandle(x) {
       const candle = document.createElement('div');
       candle.classList.add('candle');
@@ -135,3 +129,4 @@
   </script>
 </body>
 </html>
+
