@@ -34,6 +34,24 @@
       margin-top: 0;
       font-style: italic;
     }
+    nav {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #f0e9d2;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: rgba(240, 233, 210, 0.2);
+    }
     .star {
       position: fixed;
       background: white;
@@ -42,6 +60,8 @@
       animation-name: twinkle;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
+      pointer-events: none;
+      z-index: 0;
     }
     @keyframes twinkle {
       0%, 100% {opacity: 0.8;}
@@ -55,6 +75,7 @@
       background: #c35f3f;
       border-radius: 5px;
       box-shadow: 0 0 10px 3px #ff9f47;
+      z-index: 1;
     }
     .flame {
       position: absolute;
@@ -81,11 +102,15 @@
       box-shadow: 0 0 15px #2f4f8a;
       font-size: 1.1rem;
       line-height: 1.6;
+      z-index: 2;
+      position: relative;
     }
     footer {
       margin: 50px 0 20px;
       font-size: 0.9rem;
       color: #666;
+      z-index: 2;
+      position: relative;
     }
   </style>
 </head>
@@ -93,6 +118,15 @@
   <header>
     <h1>Just Listen Not Judge</h1>
     <p>提供情緒出口 · 匿名來信 · AI溫暖回覆</p>
+    <nav>
+      <a href="index.html">首頁</a>
+      <a href="submit.html">投稿區</a>
+      <a href="responses.html">回信展示</a>
+      <a href="about.html">關於 Listener</a>
+      <a href="how.html">AI 如何運作</a>
+      <a href="subscription.html">AI 男友/女友專區</a>
+      <a href="send.html">匿名送信</a>
+    </nav>
   </header>
 
   <main>
