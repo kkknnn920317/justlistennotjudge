@@ -5,34 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>回信展示 - Just Listen Not Judge</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    main {
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 20px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-    section {
-      margin-bottom: 30px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #444;
-    }
-    section h2 {
-      color: #f0e9d2;
-      margin-bottom: 10px;
-    }
-    section p {
-      color: #ddd;
-      line-height: 1.6;
-    }
-  </style>
 </head>
 <body>
   <header>
     <h1>Just Listen Not Judge</h1>
-    <p>AI Listener 的真誠回覆</p>
+    <p>提供情緒出口 · 匿名來信 · AI溫暖回覆</p>
     <nav>
       <a href="index.html">首頁</a>
       <a href="submit.html">投稿區</a>
@@ -44,29 +21,33 @@
     </nav>
   </header>
 
-  <main id="response-list">
-    <p>載入中⋯</p>
+  <main>
+    <h2>Listener 的回信</h2>
+    <div id="response-list">
+      <!-- JSON 內容會插入這裡 -->
+    </div>
   </main>
 
   <footer>© 2025 Just Listen Not Judge</footer>
 
+  <script src="js/main.js"></script>
   <script>
     fetch('responses.json')
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById('response-list');
-        container.innerHTML = '';
         data.forEach(item => {
-          const section = document.createElement('section');
-          section.innerHTML = `
-            <h2>${item.title}</h2>
-            <p>${item.content}</p>
+          const div = document.createElement('div');
+          div.style.marginBottom = '40px';
+          div.innerHTML = `
+            <p style="font-style: italic; color: #aaa;">📝 匿名來信：</p>
+            <p>${item.message}</p>
+            <p style="font-style: italic; color: #aaa;">💌 Listener 回覆：</p>
+            <p>${item.reply}</p>
+            <hr style="margin-top: 30px; border-color: #333;">
           `;
-          container.appendChild(section);
+          container.appendChild(div);
         });
-      })
-      .catch(err => {
-        document.getElementById('response-list').innerHTML = '<p>載入失敗，請稍後再試。</p>';
       });
   </script>
 </body>
