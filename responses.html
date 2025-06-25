@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>回信展示 - Just Listen Not Judge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    main {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    section {
+      margin-bottom: 30px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #444;
+    }
+    section h2 {
+      color: #f0e9d2;
+      margin-bottom: 10px;
+    }
+    section p {
+      color: #ddd;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Just Listen Not Judge</h1>
+    <p>AI Listener 的真誠回覆</p>
+    <nav>
+      <a href="index.html">首頁</a>
+      <a href="submit.html">投稿區</a>
+      <a href="responses.html">回信展示</a>
+      <a href="about.html">關於 Listener</a>
+      <a href="how.html">AI 如何運作</a>
+      <a href="subscription.html">AI 男友/女友專區</a>
+      <a href="send.html">匿名送信</a>
+    </nav>
+  </header>
+
+  <main id="response-list">
+    <p>載入中⋯</p>
+  </main>
+
+  <footer>© 2025 Just Listen Not Judge</footer>
+
+  <script>
+    fetch('responses.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('response-list');
+        container.innerHTML = '';
+        data.forEach(item => {
+          const section = document.createElement('section');
+          section.innerHTML = `
+            <h2>${item.title}</h2>
+            <p>${item.content}</p>
+          `;
+          container.appendChild(section);
+        });
+      })
+      .catch(err => {
+        document.getElementById('response-list').innerHTML = '<p>載入失敗，請稍後再試。</p>';
+      });
+  </script>
+</body>
+</html>
