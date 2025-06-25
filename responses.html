@@ -5,11 +5,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>回信展示 - Just Listen Not Judge</title>
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      background: #0B1A2A;
+      color: #ddd;
+      font-family: 'Noto Sans TC', sans-serif;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #f0e9d2;
+      margin: 0;
+      letter-spacing: 0.15em;
+      text-shadow: 0 0 8px #a6a6a6;
+    }
+    header p {
+      margin-top: 8px;
+      font-style: italic;
+      color: #ccc;
+    }
+    nav {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #f0e9d2;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: rgba(240, 233, 210, 0.2);
+    }
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(11, 26, 42, 0.75);
+      border-radius: 12px;
+      box-shadow: 0 0 15px #2f4f8a;
+    }
+    .response {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #12273c;
+      border-left: 5px solid #f0e9d2;
+      border-radius: 8px;
+    }
+    .response p {
+      margin: 0 0 10px;
+      line-height: 1.6;
+    }
+    footer {
+      text-align: center;
+      margin: 50px 0 20px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .star {
+      position: fixed;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation-name: twinkle;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.2; }
+    }
+    .candle {
+      position: fixed;
+      bottom: 40px;
+      width: 20px;
+      height: 60px;
+      background: #c35f3f;
+      border-radius: 5px;
+      box-shadow: 0 0 10px 3px #ff9f47;
+      z-index: 1;
+    }
+    .flame {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 25px;
+      background: radial-gradient(ellipse at center, #ffea70 0%, #ff7900 60%, transparent 80%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      filter: drop-shadow(0 0 6px #ff9900);
+      animation: flicker 1.5s infinite alternate;
+    }
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 1; }
+      100% { transform: translateX(-48%) scale(1.1); opacity: 0.7; }
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Just Listen Not Judge</h1>
-    <p>提供情緒出口 · 匿名來信 · AI溫暖回覆</p>
+    <p>回信展示 · AI Listener 真誠回應每封信</p>
     <nav>
       <a href="index.html">首頁</a>
       <a href="submit.html">投稿區</a>
@@ -21,34 +130,46 @@
     </nav>
   </header>
 
-  <main>
-    <h2>Listener 的回信</h2>
-    <div id="response-list">
-      <!-- JSON 內容會插入這裡 -->
+  <main id="responses">
+    <div class="response">
+      <p><strong>來信：</strong>最近真的壓力好大，好像沒人可以說話……</p>
+      <p><strong>Listener 回覆：</strong>謝謝你願意分享。你不是孤單一人，Listener 一直都在，聽你說，陪你走。</p>
     </div>
+    <div class="response">
+      <p><strong>來信：</strong>我好像做錯了選擇，但已經回不了頭。</p>
+      <p><strong>Listener 回覆：</strong>每個人都會迷路。別忘了，你有選擇重新出發的權利。</p>
+    </div>
+    <!-- 這裡可以用 JS 自動匯入更多回信 -->
   </main>
 
   <footer>© 2025 Just Listen Not Judge</footer>
 
-  <script src="js/main.js"></script>
   <script>
-    fetch('responses.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('response-list');
-        data.forEach(item => {
-          const div = document.createElement('div');
-          div.style.marginBottom = '40px';
-          div.innerHTML = `
-            <p style="font-style: italic; color: #aaa;">📝 匿名來信：</p>
-            <p>${item.message}</p>
-            <p style="font-style: italic; color: #aaa;">💌 Listener 回覆：</p>
-            <p>${item.reply}</p>
-            <hr style="margin-top: 30px; border-color: #333;">
-          `;
-          container.appendChild(div);
-        });
-      });
+    // 星星動畫
+    const starCount = 50;
+    for(let i=0; i<starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
+      star.style.top = Math.random() * window.innerHeight + 'px';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      star.style.animationDelay = (Math.random() * 5) + 's';
+      document.body.appendChild(star);
+    }
+
+    // 燭光
+    function createCandle(x) {
+      const candle = document.createElement('div');
+      candle.classList.add('candle');
+      candle.style.left = x + 'px';
+      const flame = document.createElement('div');
+      flame.classList.add('flame');
+      candle.appendChild(flame);
+      document.body.appendChild(candle);
+    }
+    createCandle(100);
+    createCandle(window.innerWidth - 120);
   </script>
 </body>
 </html>
