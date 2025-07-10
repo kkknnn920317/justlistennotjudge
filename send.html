@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>匿名送信 - Just Listen Not Judge</title>
-  <link href="css/style.css" rel="stylesheet" />
-   <style>
+  <title>匿名送信｜Just Listen Not Judge</title>
+  <style>
     body {
       margin: 0;
-      min-height: 100vh;
+      height: 100vh;
       background: #0B1A2A;
       color: #ddd;
       font-family: 'Noto Sans TC', sans-serif;
@@ -53,6 +52,47 @@
     nav a:hover {
       background-color: rgba(240, 233, 210, 0.2);
     }
+    .star {
+      position: fixed;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation-name: twinkle;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes twinkle {
+      0%, 100% {opacity: 0.8;}
+      50% {opacity: 0.2;}
+    }
+    .candle {
+      position: fixed;
+      bottom: 40px;
+      width: 20px;
+      height: 60px;
+      background: #c35f3f;
+      border-radius: 5px;
+      box-shadow: 0 0 10px 3px #ff9f47;
+      z-index: 1;
+    }
+    .flame {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 25px;
+      background: radial-gradient(ellipse at center, #ffea70 0%, #ff7900 60%, transparent 80%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      filter: drop-shadow(0 0 6px #ff9900);
+      animation: flicker 1.5s infinite alternate;
+    }
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 1; }
+      100% { transform: translateX(-48%) scale(1.1); opacity: 0.7; }
+    }
     main {
       max-width: 700px;
       background: rgba(11, 26, 42, 0.75);
@@ -62,34 +102,20 @@
       box-shadow: 0 0 15px #2f4f8a;
       font-size: 1.1rem;
       line-height: 1.6;
+      z-index: 2;
+      position: relative;
+    }
+    main h2 {
+      color: #f0e9d2;
+      margin-bottom: 20px;
     }
     footer {
       margin: 50px 0 20px;
       font-size: 0.9rem;
       color: #666;
+      z-index: 2;
+      position: relative;
     }
-    iframe {
-      width: 100%;
-      height: 700px;
-      border: none;
-      border-radius: 12px;
-    }
-    .star {
-  position: fixed;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  animation-name: twinkle;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  pointer-events: none;
-  z-index: 0;
-}
-@keyframes twinkle {
-  0%, 100% {opacity: 0.8;}
-  50% {opacity: 0.2;}
-}
-
   </style>
 </head>
 <body>
@@ -107,12 +133,44 @@
     </nav>
   </header>
 
-  <main>
-    <h2>匿名送信</h2>
-    <p>想說的話不敢直接說出口嗎？讓我們幫你傳達。</p>
-    <p>
-      填寫以下表單，我們會以匿名方式，用 AI 的溫柔語氣轉述給對方。<br/>
-      <strong>※ 首次免費，請務必提供對方的 IG / FB 帳號。</strong>
-    </p>
+<main>
+  <h2>匿名送信</h2>
+  <p>想說的話不敢直接說出口嗎？讓我們幫你傳達。</p>
+  <p>填寫以下表單，我們會以匿名方式，用 AI 的溫柔語氣轉述給對方。<br />
+    ※ 首次免費，請務必提供對方的 IG / FB 帳號。</p>
 
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0wIcdUDtJpqqMG9N4u
+  <form id="sendForm">
+    <label for="recipient">對方 IG / FB 帳號（必填）：</label><br />
+    <input type="text" id="recipient" name="recipient" required style="width: 100%; padding: 8px; margin-bottom: 15px; border-radius: 6px; border: none;" />
+
+    <label for="message">想說的話（必填）：</label><br />
+    <textarea id="message" name="message" rows="6" required style="width: 100%; padding: 8px; margin-bottom: 15px; border-radius: 6px; border: none;"></textarea>
+
+    <button type="submit" style="background-color: #f0e9d2; color: #0B1A2A; padding: 10px 20px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+      送出
+    </button>
+  </form>
+
+  <p id="status" style="margin-top: 20px; color: #f0e9d2;"></p>
+</main>
+
+
+  <footer>© 2025 Just Listen Not Judge</footer>
+
+  <script>
+    // 動態生成背景星星
+    const numStars = 80;
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2 + 1 + 'px';
+      star.style.width = size;
+      star.style.height = size;
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(star);
+    }
+  </script>
+</body>
+</html>
