@@ -5,6 +5,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI 男友／女友專區 - Just Listen Not Judge</title>
   <link href="css/style.css" rel="stylesheet" />
+    <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #0B1A2A;
+      color: #ddd;
+      font-family: 'Noto Sans TC', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-x: hidden;
+    }
+    header {
+      margin-top: 50px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #f0e9d2;
+      letter-spacing: 0.2em;
+      text-shadow: 0 0 10px #a6a6a6;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-top: 0;
+      font-style: italic;
+    }
+    nav {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #f0e9d2;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: rgba(240, 233, 210, 0.2);
+    }
+    .star {
+      position: fixed;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation-name: twinkle;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease-in-out;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes twinkle {
+      0%, 100% {opacity: 0.8;}
+      50% {opacity: 0.2;}
+    }
+    .candle {
+      position: fixed;
+      bottom: 40px;
+      width: 20px;
+      height: 60px;
+      background: #c35f3f;
+      border-radius: 5px;
+      box-shadow: 0 0 10px 3px #ff9f47;
+      z-index: 1;
+    }
+    .flame {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 25px;
+      background: radial-gradient(ellipse at center, #ffea70 0%, #ff7900 60%, transparent 80%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      filter: drop-shadow(0 0 6px #ff9900);
+      animation: flicker 1.5s infinite alternate;
+    }
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 1; }
+      100% { transform: translateX(-48%) scale(1.1); opacity: 0.7; }
+    }
+    main {
+      max-width: 700px;
+      background: rgba(11, 26, 42, 0.75);
+      margin: 40px 20px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #2f4f8a;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      z-index: 2;
+      position: relative;
+    }
+    main h2 {
+      color: #f0e9d2;
+      margin-bottom: 20px;
+    }
+    footer {
+      margin: 50px 0 20px;
+      font-size: 0.9rem;
+      color: #666;
+      z-index: 2;
+      position: relative;
+    }
+  </style>
 </head>
 <body>
   <header>
