@@ -165,6 +165,21 @@
 
   <footer>© 2025 Just Listen Not Judge</footer>
 
-  <script src="js/main.js"></script>
+   <script src="js/main.js"></script>
+  <script>
+  // 動態生成背景星星
+  const numStars = 80;
+  for (let i = 0; i < numStars; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2 + 1 + 'px';
+    star.style.width = size;
+    star.style.height = size;
+    star.style.top = Math.random() * 100 + 'vh';
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    document.body.appendChild(star);
+  }
+</script>
 </body>
 </html>
